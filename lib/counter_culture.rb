@@ -280,15 +280,15 @@ module CounterCulture
     end
 
     def relation_klass(relation)
-      self.class.send :relation_klass, relation
+      relation_reflect(relation).klass      
     end
 
     def relation_reflect(relation)
-      self.class.send :relation_reflect, relation
+      self.class.send :reflect_on_association, relation
     end
     
     def relation_foreign_key(relation)
-      self.class.send :relation_foreign_key, relation
+      relation_reflect(relation).foreign_key
     end
 
     def first_level_relation_foreign_key(relation)
